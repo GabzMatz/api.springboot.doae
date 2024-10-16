@@ -78,4 +78,12 @@ public class UserService {
         return ResponseEntity.badRequest().build();
     }
 
+    public ResponseEntity<Void> deleteUser(DeleteRequestDTO body) {
+        Optional<User> user = repository.findById(body.id());
+        if(user.isPresent()){
+            repository.delete(user.get());
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
 }

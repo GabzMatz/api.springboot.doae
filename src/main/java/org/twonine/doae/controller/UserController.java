@@ -34,5 +34,9 @@ public class UserController {
     public ResponseEntity<List<NgoAndCompanyResponseDTO>> searchCOMPANY(){
         return userService.searchService(Role.COMPANY);
     }
+    @DeleteMapping("/delete-{id}")
+    public void deleteUser(@PathVariable DeleteRequestDTO body){
+        userService.deleteUser(body);
+    }
 
 }
